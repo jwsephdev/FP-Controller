@@ -6,6 +6,8 @@ class_name Player extends CharacterBody3D
 @onready var crouch_check_cast: RayCast3D = $CrouchCheckCast
 @onready var camera: Camera3D = $Head/neck/Camera
 @onready var neck: Node3D = $Head/neck
+@onready var fps: Label = $VBoxContainer/FPS
+@onready var state: Label = $VBoxContainer/STATE
 
 #States
 var walking = false
@@ -35,6 +37,7 @@ var direction = Vector3.ZERO
 #CROUCH DEPTH
 var crouch_depth = -0.8
 
+var CharacterState = "Standing"
 
 
 func _ready():
@@ -53,6 +56,9 @@ func _input(event):
 
 
 func _physics_process(delta):
+	fps.text = "FPS:" + str(Engine.get_frames_per_second())
+	state.text = "State:" + CharacterState
+	
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	
 	
@@ -62,6 +68,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			speed_current = lerp(speed_current, crouch_Speed, delta * 2)
 		head.position.y = lerp(head.position.y, 0.5 + crouch_depth, delta*lerp_speed)
+		CharacterState = "Crouching"
 		standing_col.disabled = true
 		crouching_col.disabled = false
 	
@@ -75,6 +82,7 @@ func _physics_process(delta):
 		crouching_col.disabled = true
 		head.position.y = lerp(head.position.y, 0.5, delta*lerp_speed)
 		speed_current = walk_speed
+		CharacterState = "Standing"
 		
 		crouching = false
 		sprinting = false

@@ -13,11 +13,9 @@ height = 1.2
 script = ExtResource("1_xhfnw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_0rwas")
 
 [node name="Standing_col" type="CollisionShape3D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape3D_xhfnw")
 
 [node name="Crouching_col" type="CollisionShape3D" parent="."]
@@ -35,3 +33,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0717551, 0)
 [node name="CrouchCheckCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.637802, 0)
 target_position = Vector3(0, 2, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FPS" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "FPS:"
+
+[node name="STATE" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "STATE: "
