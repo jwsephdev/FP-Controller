@@ -7,7 +7,7 @@ feel free to use it anyway you want, but idk why anyone would want to use this.
 
 
 
-# APRIL 3, 2024 UPDATE 0.2
+# APRIL 3, 2025 UPDATE 0.2
 
 UPDATED FOR GODOT 4.4.1
 
