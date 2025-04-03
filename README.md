@@ -1,10 +1,13 @@
 # FP-Controller-Template-Godot
-Basic First Person Controller Template for Godot
+I got bored and made this First Person Character Controller for Godot 4.1, and so i'll just update it and make it better i uploaded it to github so other people may want to use my very bad controller lol.
 
-Feel Free to use it in any of your Projects
+feel free to use it anyway you want, but idk why anyone would want to use this.
+
+0.1 of this Controller only had the default built in godot movement and i added being able to move the camera with the mouse
 
 
-# APRIL 3, 2024 UPDATE 1.1
+
+# APRIL 3, 2024 UPDATE 0.2
 
 UPDATED FOR GODOT 4.4.1
 
