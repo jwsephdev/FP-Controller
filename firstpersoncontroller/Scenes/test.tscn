@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://cci4wa6cubwg0"]
+
+[ext_resource type="PackedScene" uid="uid://4yye06e5g4d" path="res://Scenes/Player.tscn" id="2_ys1qc"]
+[ext_resource type="Texture2D" uid="uid://cvvodkaj2srie" path="res://Textures/texture_01 (2).png" id="3_35xla"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_37kl0"]
+sky_top_color = Color(0.346804, 0.386944, 0.992315, 1)
+sky_horizon_color = Color(1.04891, 1.04201, 1.17381, 1)
+ground_bottom_color = Color(0.608932, 0.541189, 0.463017, 1)
+ground_horizon_color = Color(1.04891, 1.04201, 1.17381, 1)
+
+[sub_resource type="Sky" id="Sky_8uh7m"]
+sky_material = SubResource("ProceduralSkyMaterial_37kl0")
+
+[sub_resource type="Environment" id="Environment_6uqi0"]
+background_mode = 2
+sky = SubResource("Sky_8uh7m")
+tonemap_mode = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8od7v"]
+load_path = "res://.godot/imported/texture_02.png-814d4f515892bb8274d285748f4a73a0.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uqi0"]
+albedo_texture = SubResource("CompressedTexture2D_8od7v")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8uh7m"]
+material = SubResource("StandardMaterial3D_6uqi0")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6uqi0"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppyta"]
+albedo_texture = ExtResource("3_35xla")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykrsh"]
+albedo_texture = ExtResource("3_35xla")
+
+[node name="Test" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_6uqi0")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8uh7m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6uqi0")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_ys1qc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08683, 0)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57261, 1.06492, -4.96372)
+material_override = SubResource("StandardMaterial3D_ppyta")
+use_collision = true
+size = Vector3(8.14551, 2.15552, 3.50641)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Objects/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.119256, -0.365714, -0.0032959)
+operation = 2
+size = Vector3(8.80493, 1.42426, 2.53394)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Objects/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.530718, 0.847548, 0, -0.847548, 0.530718, 0.56565, -0.0515718, 3.41662)
+size = Vector3(6.25543, 4.0173, 0.151489)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Objects"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.53202, 0.487193, -11.3669)
+material_override = SubResource("StandardMaterial3D_ykrsh")
+use_collision = true
+size = Vector3(1, 0.506119, 2.08887)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Objects"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.72043, 1.09144, -11.1969)
+material_override = SubResource("StandardMaterial3D_ykrsh")
+use_collision = true
+size = Vector3(1, 1.11129, 2.58972)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Objects"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.554, 1.34156, -10.6029)
+material_override = SubResource("StandardMaterial3D_ykrsh")
+use_collision = true
+size = Vector3(1, 1.37059, 2.74268)

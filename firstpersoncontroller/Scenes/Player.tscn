@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://4yye06e5g4d"]
+
+[ext_resource type="Script" uid="uid://sqjp8q4r0x15" path="res://Scripts/player.gd" id="1_xhfnw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0rwas"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xhfnw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
+height = 1.2
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_xhfnw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_0rwas")
+
+[node name="Standing_col" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape3D_xhfnw")
+
+[node name="Crouching_col" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kpjcp")
+disabled = true
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="neck" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428245, 0)
+
+[node name="Camera" type="Camera3D" parent="Head/neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0717551, 0)
+
+[node name="CrouchCheckCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.637802, 0)
+target_position = Vector3(0, 2, 0)
