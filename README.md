@@ -11,7 +11,7 @@ feel free to use it anyway you want, but idk why anyone would want to use this.
 
 UPDATED FOR GODOT 4.4.1
 
-*Crouching
+*Added Crouching
 
 *Added camera leaning when walking Left or Right
 
