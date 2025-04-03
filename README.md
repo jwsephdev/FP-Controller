@@ -16,4 +16,7 @@ UPDATED FOR GODOT 4.4.1
 
 *State Transitions Smoother
 
+*Added FPS Counter
+
+
 
