@@ -8,7 +8,7 @@ A First Person Controller Made for Godot 4<br>
 
 ## Importing to Project Files
 
-Download the "firstpersonconroller" Folder
+Download the "firstpersoncontroller" Folder
 
 Import to Godot 4.4.1
     
