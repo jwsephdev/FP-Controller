@@ -1,26 +1,26 @@
-# FP-Controller-Template-Godot
-I got bored and made this First Person Character Controller for Godot 4.1, and so i'll just update it and make it better i uploaded it to github so other people may want to use my very bad controller lol.
 
-feel free to use it anyway you want, but idk why anyone would want to use this.
+# Jwseph's FPS Controller for Godot
 
-0.1 of this Controller only had the default built in godot movement and i added being able to move the camera with the mouse
-
+A First Person Controller Made for Godot 4<br>
+*Last Updated for Godot 4.4.1 
 
 
-# APRIL 3, 2025 UPDATE 0.2
-
-UPDATED FOR GODOT 4.4.1
-
-*Added Crouching
-
-*Added camera leaning when walking Left or Right
-
-*Movement more smoother
-
-*State Transitions Smoother
-
-*Added FPS Counter
-
-[![YouTube](http://i.ytimg.com/vi/u7hW5DgN3zE/hqdefault.jpg)](https://www.youtube.com/watch?v=u7hW5DgN3zE)
 
 
+## Installation
+
+Download the Project files
+
+Import to Godot 4.4.1
+    
+## Features
+
+Rigidbody Grab System
+![Untitled design](https://github.com/user-attachments/assets/3ed72794-eb35-4610-8215-899e7e3a0aea)
+
+Object Interaction
+![Untitled design (2)](https://github.com/user-attachments/assets/940b311f-6d1e-4366-b4c5-5cb4184a7858)
+![Untitled design (1)](https://github.com/user-attachments/assets/a7e6d57b-790f-424c-a20e-e4c9b967762d)
+
+Head Leaning
+![Untitled design (3)](https://github.com/user-attachments/assets/7d21e07a-ae03-4188-8d79-a9cdc1cf3330)
