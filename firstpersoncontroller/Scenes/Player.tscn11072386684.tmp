@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4yye06e5g4d"]
+[gd_scene load_steps=8 format=3 uid="uid://4yye06e5g4d"]
 
 [ext_resource type="Script" uid="uid://sqjp8q4r0x15" path="res://Scripts/player.gd" id="1_xhfnw"]
+[ext_resource type="Script" uid="uid://diu7l0siqurhe" path="res://Scenes/sway.gd" id="2_dewec"]
+[ext_resource type="PackedScene" uid="uid://bbq7aqwawolis" path="res://Models/Pistol_Compact_West.glb" id="2_gntrk"]
+[ext_resource type="Texture2D" uid="uid://cpvxobqeos7o" path="res://Textures/crosshair001.png" id="2_kyqiw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0rwas"]
 
@@ -8,9 +11,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpjcp"]
 height = 1.2
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rpqav"]
-load_path = "res://.godot/imported/crosshair001.png-303a7e1378613b4ab7cfcdd50bbd4d1a.ctex"
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_xhfnw")
@@ -42,10 +42,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.0900611)
 target_position = Vector3(0, 0, -2.5)
 collision_mask = 3
-debug_shape_custom_color = Color(0.176471, 1, 0, 1)
 
 [node name="Hand" type="Marker3D" parent="Head/neck/Camera/Rays/InteractRay"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08933)
+
+[node name="gunray" type="RayCast3D" parent="Head/neck/Camera/Rays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.082649)
+target_position = Vector3(0, 0, -50)
+collision_mask = 3
+
+[node name="gunpos" type="Node3D" parent="Head/neck/Camera"]
+
+[node name="gunmoedl" type="Node3D" parent="Head/neck/Camera"]
+script = ExtResource("2_dewec")
+
+[node name="Pistol_Compact_West2" parent="Head/neck/Camera/gunmoedl" instance=ExtResource("2_gntrk")]
+transform = Transform3D(0.999903, 0, -0.0139622, 0, 1, 0, 0.0139622, 0, 0.999903, 0.275, -0.044, -0.295281)
+
+[node name="gunposanims" type="AnimationPlayer" parent="Head/neck/Camera"]
 
 [node name="CrouchCheckCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00154, 0)
@@ -65,5 +79,5 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CompressedTexture2D_rpqav")
+texture = ExtResource("2_kyqiw")
 metadata/_edit_use_anchors_ = true

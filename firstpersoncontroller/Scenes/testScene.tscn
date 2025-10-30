@@ -1,0 +1,384 @@
+[gd_scene load_steps=32 format=3 uid="uid://bearua17sxpw0"]
+
+[ext_resource type="Texture2D" uid="uid://bn8vs30g4r3wt" path="res://Textures/prototextures/gray.png" id="1_hgell"]
+[ext_resource type="PackedScene" uid="uid://4yye06e5g4d" path="res://Scenes/Player.tscn" id="2_qaahg"]
+[ext_resource type="Texture2D" uid="uid://cnl8py0sb7kft" path="res://Textures/prototextures/orange.png" id="3_0w1dg"]
+[ext_resource type="Script" uid="uid://c4hx20u8keik0" path="res://Scripts/button.gd" id="4_0w1dg"]
+[ext_resource type="Texture2D" uid="uid://ddtiwqm2ojopu" path="res://Textures/prototextures/red.png" id="4_3b31u"]
+[ext_resource type="Texture2D" uid="uid://dpdo4x33rf6nq" path="res://icon.svg" id="5_gab3u"]
+[ext_resource type="Script" uid="uid://citouttsfrc4d" path="res://Scripts/dialogueInteract.gd" id="6_2xakv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b31u"]
+albedo_texture = ExtResource("1_hgell")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gab3u"]
+material = SubResource("StandardMaterial3D_3b31u")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2xakv"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qaahg"]
+sky_top_color = Color(0.282739, 0.297656, 0.686786, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.576057, 0.509525, 0.432671, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_hgell"]
+sky_material = SubResource("ProceduralSkyMaterial_qaahg")
+
+[sub_resource type="Environment" id="Environment_0w1dg"]
+background_mode = 2
+sky = SubResource("Sky_hgell")
+tonemap_mode = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0w1dg"]
+albedo_texture = ExtResource("4_3b31u")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qaahg"]
+material = SubResource("StandardMaterial3D_0w1dg")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qaahg"]
+points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gab3u"]
+albedo_texture = ExtResource("4_3b31u")
+uv1_triplanar = true
+
+[sub_resource type="Animation" id="Animation_0w1dg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.45542, 0.155414, -11.0387)]
+}
+
+[sub_resource type="Animation" id="Animation_3b31u"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.62754, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.45542, 0.155414, -11.0387)]
+}
+
+[sub_resource type="Animation" id="Animation_hgell"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.62754, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.45542, 0.155414, -11.0387)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3b31u"]
+_data = {
+&"RESET": SubResource("Animation_0w1dg"),
+&"close": SubResource("Animation_3b31u"),
+&"open": SubResource("Animation_hgell")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly28m"]
+albedo_texture = ExtResource("5_gab3u")
+uv1_scale = Vector3(1.83, 1.83, 1.83)
+uv1_offset = Vector3(0, -0.77, -2.675)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7x237"]
+material = SubResource("StandardMaterial3D_ly28m")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2xakv"]
+size = Vector3(0.3, 0.8, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ly28m"]
+size = Vector3(0.2, 1, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2xakv"]
+size = Vector3(0.401306, 1.16339, 1)
+
+[sub_resource type="Animation" id="Animation_ly28m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2xakv"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MarginContainer/PanelContainer/MarginContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x237"]
+_data = {
+&"RESET": SubResource("Animation_ly28m"),
+&"open": SubResource("Animation_2xakv")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2xakv"]
+radius = 2.67669
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xakv"]
+albedo_texture = ExtResource("3_0w1dg")
+uv1_triplanar = true
+
+[node name="huh" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_gab3u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2xakv")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_0w1dg")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_qaahg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54036, 0)
+
+[node name="Rigidbodies" type="Node3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Rigidbodies" groups=["enemy", "pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59961, -5.09908)
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rigidbodies/RigidBody3D"]
+mesh = SubResource("BoxMesh_qaahg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rigidbodies/RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_qaahg")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="Rigidbodies" groups=["enemy", "pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09465, 1.59961, -5.09908)
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rigidbodies/RigidBody3D2"]
+mesh = SubResource("BoxMesh_qaahg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rigidbodies/RigidBody3D2"]
+shape = SubResource("ConvexPolygonShape3D_qaahg")
+
+[node name="Interactables" type="Node3D" parent="."]
+
+[node name="Door" type="Node3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.45542, 0.155414, -11.0387)
+
+[node name="door" type="CSGBox3D" parent="Interactables/Door" groups=["interact"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594463, 1.17538, -0.696731)
+use_collision = true
+collision_mask = 3
+size = Vector3(0.208008, 2.53857, 1.34326)
+material = SubResource("StandardMaterial3D_gab3u")
+script = ExtResource("4_0w1dg")
+
+[node name="Doorbuttonanims" type="AnimationPlayer" parent="Interactables/Door"]
+libraries = {
+&"": SubResource("AnimationLibrary_3b31u")
+}
+
+[node name="Character" type="Node3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92742, 0.784609, 0)
+
+[node name="Charactermesh" type="MeshInstance3D" parent="Interactables/Character"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.04479, 0)
+mesh = SubResource("BoxMesh_7x237")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.539794, 0)
+mesh = SubResource("BoxMesh_2xakv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+transform = Transform3D(1, 0, 0, 0, 0.682853, -0.730556, 0, 0.730556, 0.682853, 0, -0.486889, -0.305867)
+mesh = SubResource("BoxMesh_ly28m")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+transform = Transform3D(1, 0, 0, 0, 0.68044, 0.732804, 0, -0.732804, 0.68044, 0, -0.486889, 0.300252)
+mesh = SubResource("BoxMesh_ly28m")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+transform = Transform3D(1, 0, 0, 0, 0.969317, 0.245815, 0, -0.245815, 0.969317, 0, -1.40215, 0.199087)
+mesh = SubResource("BoxMesh_ly28m")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+transform = Transform3D(1, 0, 0, 0, 0.975745, -0.21891, 0, 0.21891, 0.975745, 0, -1.40215, -0.276285)
+mesh = SubResource("BoxMesh_ly28m")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Interactables/Character" groups=["interact"]]
+script = ExtResource("6_2xakv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Character/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194397, 0.708579, 0)
+shape = SubResource("BoxShape3D_2xakv")
+
+[node name="dialogueanims" type="AnimationPlayer" parent="Interactables/Character"]
+libraries = {
+&"": SubResource("AnimationLibrary_7x237")
+}
+
+[node name="Area3D" type="Area3D" parent="Interactables/Character"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Character/Area3D"]
+shape = SubResource("SphereShape3D_2xakv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Interactables/Character"]
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Character/CanvasLayer"]
+visible = false
+offset_left = 390.0
+offset_top = 459.0
+offset_right = 762.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="Interactables/Character/CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Character/CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Interactables/Character/CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "You are gay lol"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Doorwall" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38581, 1.4401, -11.3735)
+use_collision = true
+collision_mask = 3
+size = Vector3(0.236328, 2.95361, 9.41235)
+material = SubResource("StandardMaterial3D_2xakv")
+
+[node name="e" type="CSGBox3D" parent="Walls/Doorwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18419, -0.12956, -0.383359)
+operation = 2
+use_collision = true
+collision_mask = 3
+size = Vector3(0.910553, 2.62512, 1.34352)
+
+[connection signal="body_entered" from="Interactables/Character/Area3D" to="Interactables/Character/StaticBody3D" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Interactables/Character/Area3D" to="Interactables/Character/StaticBody3D" method="_on_area_3d_body_exited"]
