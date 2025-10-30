@@ -29,9 +29,9 @@ A First Person Character Controller Made for Godot 4<br>
 
 ## Default Keybinds
 
-[W,A,S,D] - Character Movement
-[CTRL] - Crouch
-[SPACE] - Jump
-[E] - Interact
+[W,A,S,D] - Character Movement<br>
+[CTRL] - Crouch<br>
+[SPACE] - Jump<br>
+[E] - Interact<br>
 
 
