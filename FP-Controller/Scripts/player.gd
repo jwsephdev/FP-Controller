@@ -32,6 +32,7 @@ const JUMP_VELOCITY = 4.5
 #CROUCH DEPTH
 var crouch_depth = -0.8
 
+@export var CrouchHeadSpeed: int = 10
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -55,7 +56,7 @@ func crouchSystem(delta):
 			
 		if is_on_floor():
 			speed_current = lerp(speed_current, crouch_Speed, delta * 2)
-		head.position.y = lerp(head.position.y, 0.5 + crouch_depth, delta*5)
+		head.position.y = lerp(head.position.y, 0.5 + crouch_depth, delta*CrouchHeadSpeed)
 		
 		standing_col.disabled = true
 		crouching_col.disabled = false

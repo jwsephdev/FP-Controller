@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bn8vs30g4r3wt" path="res://Textures/prototextures/gray.png" id="1_hgell"]
 [ext_resource type="PackedScene" uid="uid://4yye06e5g4d" path="res://Scenes/Player.tscn" id="2_qaahg"]
 [ext_resource type="Texture2D" uid="uid://cnl8py0sb7kft" path="res://Textures/prototextures/orange.png" id="3_0w1dg"]
-[ext_resource type="Script" uid="uid://c4hx20u8keik0" path="res://Scripts/button.gd" id="4_0w1dg"]
+[ext_resource type="Script" uid="uid://c4hx20u8keik0" path="res://Scripts/Door.gd" id="4_0w1dg"]
 [ext_resource type="Texture2D" uid="uid://ddtiwqm2ojopu" path="res://Textures/prototextures/red.png" id="4_3b31u"]
 [ext_resource type="Texture2D" uid="uid://dpdo4x33rf6nq" path="res://icon.svg" id="5_gab3u"]
 [ext_resource type="Script" uid="uid://citouttsfrc4d" path="res://Scripts/dialogueInteract.gd" id="6_2xakv"]
