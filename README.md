@@ -1,5 +1,5 @@
 
-# Jwseph's First Person Character Controller Template
+# Jwseph's First Person Character Controller
 
 A First Person Character Controller Made for Godot 4<br>
 *Last Updated for Godot 4.4.1 
