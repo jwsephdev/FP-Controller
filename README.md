@@ -23,6 +23,10 @@ A First Person Character Controller Made for Godot 4<br>
 <br>
 ![Untitled design (1)](https://github.com/user-attachments/assets/a7e6d57b-790f-424c-a20e-e4c9b967762d)
 
+🙇Crouching<br>
+<br>
+![2025-10-30 16-56-46](https://github.com/user-attachments/assets/25721c89-5521-4c45-9890-60db1073846b)
+
 👀Head Leaning<br>
 <br>
 ![Untitled design (3)](https://github.com/user-attachments/assets/7d21e07a-ae03-4188-8d79-a9cdc1cf3330)
