@@ -1,5 +1,5 @@
 
-# Jwseph's FPS Controller for Godot
+# Jwseph's FPS Controller Template for Godot
 
 A First Person Controller Made for Godot 4<br>
 *Last Updated for Godot 4.4.1 
