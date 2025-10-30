@@ -19,9 +19,7 @@ A First Person Character Controller Made for Godot 4<br>
 
 👉Object Interaction<br>
 <br>
-![Untitled design (2)](https://github.com/user-attachments/assets/940b311f-6d1e-4366-b4c5-5cb4184a7858)<br>
-<br>
-![Untitled design (1)](https://github.com/user-attachments/assets/a7e6d57b-790f-424c-a20e-e4c9b967762d)
+![Untitled design (2)](https://github.com/user-attachments/assets/940b311f-6d1e-4366-b4c5-5cb4184a7858)     ![Untitled design (1)](https://github.com/user-attachments/assets/a7e6d57b-790f-424c-a20e-e4c9b967762d)
 
 🙇Crouching<br>
 <br>
