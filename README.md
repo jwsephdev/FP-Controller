@@ -1,7 +1,7 @@
 
-# Jwseph's FPS Controller Template for Godot
+# Jwseph's First Person Character Controller Template
 
-A First Person Controller Made for Godot 4<br>
+A First Person Character Controller Made for Godot 4<br>
 *Last Updated for Godot 4.4.1 
 
 
