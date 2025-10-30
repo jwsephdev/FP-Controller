@@ -8,8 +8,8 @@ A First Person Controller Made for Godot 4<br>
 
 ## Importing to Project Files
 1. Go to Releases, and choose the Release version you want.
-2. From your downloaded ``.zip`` file, extract the ``FP-Controller`` folder
-3. Import the ``FP-Controller`` to Godot 4.4.1
+2. Extract the ``FP-Controller`` folder from your downloaded ``.zip`` file. 
+3. Import the ``FP-Controller`` to Godot 4.4.1.
     
 ## Features
 
