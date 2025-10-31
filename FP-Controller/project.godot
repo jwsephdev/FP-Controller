@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="JwsephDEV-FP-Controller"
+config/name="JwsephDEV-FP-Controller-0.3.0"
 run/main_scene="uid://bearua17sxpw0"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
@@ -21,7 +21,6 @@ window/stretch/mode="canvas_items"
 
 [global_group]
 
-pickable=""
 interact=""
 
 [input]
@@ -59,7 +58,9 @@ Interact={
 
 [physics]
 
+common/physics_jitter_fix=0.0
 3d/physics_engine="Jolt Physics"
+common/physics_interpolation=true
 
 [rendering]
 

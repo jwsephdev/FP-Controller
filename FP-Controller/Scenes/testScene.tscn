@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bearua17sxpw0"]
+[gd_scene load_steps=29 format=3 uid="uid://bearua17sxpw0"]
 
 [ext_resource type="Texture2D" uid="uid://bn8vs30g4r3wt" path="res://Textures/prototextures/gray.png" id="1_hgell"]
 [ext_resource type="PackedScene" uid="uid://4yye06e5g4d" path="res://Scenes/Player.tscn" id="2_qaahg"]
@@ -32,17 +32,6 @@ sky_material = SubResource("ProceduralSkyMaterial_qaahg")
 background_mode = 2
 sky = SubResource("Sky_hgell")
 tonemap_mode = 4
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0w1dg"]
-albedo_texture = ExtResource("4_3b31u")
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_qaahg"]
-material = SubResource("StandardMaterial3D_0w1dg")
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qaahg"]
-points = PackedVector3Array(-0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gab3u"]
 albedo_texture = ExtResource("4_3b31u")
@@ -244,30 +233,6 @@ environment = SubResource("Environment_0w1dg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_qaahg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54036, 0)
-
-[node name="Rigidbodies" type="Node3D" parent="."]
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Rigidbodies" groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59961, -5.09908)
-collision_layer = 3
-collision_mask = 3
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rigidbodies/RigidBody3D"]
-mesh = SubResource("BoxMesh_qaahg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rigidbodies/RigidBody3D"]
-shape = SubResource("ConvexPolygonShape3D_qaahg")
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="Rigidbodies" groups=["pickable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09465, 1.59961, -5.09908)
-collision_layer = 3
-collision_mask = 3
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rigidbodies/RigidBody3D2"]
-mesh = SubResource("BoxMesh_qaahg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rigidbodies/RigidBody3D2"]
-shape = SubResource("ConvexPolygonShape3D_qaahg")
 
 [node name="Interactables" type="Node3D" parent="."]
 

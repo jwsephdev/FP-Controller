@@ -29,9 +29,8 @@ var lerp_speed = 10.0
 var direction = Vector3.ZERO
 const JUMP_VELOCITY = 4.5
 
-#CROUCH DEPTH
+#CROUCH VARIABLES
 var crouch_depth = -0.8
-
 @export var CrouchHeadSpeed: int = 10
 
 func _ready():
@@ -71,14 +70,6 @@ func objectInteraction():
 	var object = interactray.get_collider()
 	
 	if interactray.is_colliding():
-		if Input.is_action_pressed("Interact"):
-			
-			if object.is_in_group("pickable"):
-				object.global_position = hand.global_position
-				object.global_rotation = hand.global_rotation
-				object.collision_layer = 2
-				object.linear_velocity = Vector3(0, 1, 0)
-				
 		if Input.is_action_just_pressed("Interact"):
 			if object.is_in_group("interact"):
 				object.interaction()
