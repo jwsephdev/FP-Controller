@@ -212,7 +212,7 @@ radius = 2.67669
 albedo_texture = ExtResource("3_0w1dg")
 uv1_triplanar = true
 
-[node name="huh" type="Node3D"]
+[node name="TestScene" type="Node3D"]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_gab3u")

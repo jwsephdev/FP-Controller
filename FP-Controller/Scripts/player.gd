@@ -1,50 +1,37 @@
 class_name Player extends CharacterBody3D
 
-# ---- node references ----
-#Camera Nodes
 @onready var head = $Head
-@onready var camera: Camera3D = $Head/Neck/Camera
-@onready var neck: Node3D = $Head/Neck
-
-#Crouching Nodes
 @onready var crouching_col: CollisionShape3D = $Crouching_col
 @onready var standing_col: CollisionShape3D = $Standing_col
-@onready var crouch_check_ray: RayCast3D = $crouchCheckRay
+@onready var crouch_check_ray: RayCast3D = $CrouchCheckCast
+@onready var camera: Camera3D = $Head/neck/Camera
+@onready var neck: Node3D = $Head/neck
+@onready var interactray: RayCast3D = $Head/neck/Camera/Rays/InteractRay
+@onready var hand: Marker3D = $Head/neck/Camera/Rays/InteractRay/Hand
 
-#Interact Nodes
-@onready var interactray: RayCast3D = $Head/Neck/Camera/Rays/InteractRay
-
-# ---- variables -----
 
 #SPEEDS
-@export var player_speed = 10.0
+var speed_current = 6.0
+var crouch_Speed = 3.0
+var walk_speed = 6.0
 
 #CAMERA SENSITIVITY
-@export var cameraSensitivity = 0.2
-@export var cameraFOV = 75.0
-
-#Headleaning
-@export var leftLeanDepth: float = 0.08
-@export var rightLeanDepth: float = -0.08
-@export var LeanSpeed: float = 2.0
-
-var leanState
-
-enum {
-	leftLean,
-	rightLean,
-	idleLean,
-}
+@export var sens = 0.2
+@export var FOV = 75
 
 #PLAYER GRAVITY
 var gravity = 9.8
-
 #STATE TRANSITION SPEED
 var lerp_speed = 10.0
 
 #MOVEMENT VARIABLES
 var direction = Vector3.ZERO
 const JUMP_VELOCITY = 4.5
+var input_dir
+
+#Headleaning
+@export var LeanDepth: float = 0.04
+@export var LeanSpeed: float = 8.0
 
 #CROUCH VARIABLES
 @export var CrouchHeadSpeed: int = 10
@@ -56,30 +43,14 @@ enum {
 	not_crouching,
 }
 
-# ---- bruh momment ----
+# ------ 
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	camera.fov = cameraFOV
+	camera.fov = FOV
 
-
-func headLean(delta):
-	
-	if Input.is_action_pressed("left") and is_on_floor():
-		leanState = leftLean
-	elif Input.is_action_pressed("right") and is_on_floor():
-		leanState = rightLean
-	else:
-		leanState = idleLean
-	
-	match leanState:
-		leftLean:
-			neck.rotation.z = lerp(neck.rotation.z, leftLeanDepth, delta * LeanSpeed)
-		rightLean:
-			neck.rotation.z = lerp(neck.rotation.z, rightLeanDepth, delta * LeanSpeed)
-		idleLean:
-			neck.rotation.z = lerp(neck.rotation.z, 0.0, delta * LeanSpeed)
-
+func camera_tilt(input_x, delta):
+	neck.rotation.z = lerp(neck.rotation.z, -input_x * LeanDepth, LeanSpeed * delta)
 
 func crouchSystem(delta):
 	if Input.is_action_pressed("crouch"):
@@ -99,7 +70,7 @@ func crouchSystem(delta):
 			crouching_col.disabled = true
 			head.position.y = lerp(head.position.y, 0.5, delta*15)
 	
-	
+
 func objectInteraction():
 	var object = interactray.get_collider()
 	
@@ -108,42 +79,38 @@ func objectInteraction():
 			if object.is_in_group("interact"):
 				object.interaction()
 
-func mouseMovement(event):
+func mouseMovent(event):
 	if event is InputEventMouseMotion:
-		head.rotate_y(deg_to_rad(-event.relative.x) * cameraSensitivity)
-		camera.rotate_x(deg_to_rad( -event.relative.y) * cameraSensitivity)
+		head.rotate_y(deg_to_rad(-event.relative.x) * sens)
+		camera.rotate_x(deg_to_rad( -event.relative.y) * sens)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
-
 func _input(event):
-	mouseMovement(event)
-
+	mouseMovent(event)
 
 func _process(delta: float) -> void:
 	objectInteraction()
-	headLean(delta)
 	crouchSystem(delta)
+	camera_tilt(input_dir.x , delta)
 
 func _physics_process(delta):
 
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	direction = lerp(direction,(head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
-	
+	input_dir = Input.get_vector("left", "right", "forward", "backward")
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	
+		
+	direction = lerp(direction,(head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
 	if is_on_floor():
 		if direction:
-			velocity.x = direction.x * player_speed
-			velocity.z = direction.z * player_speed
+			velocity.x = direction.x * speed_current
+			velocity.z = direction.z * speed_current
 		else:
-			velocity.x = move_toward(velocity.x, 0, player_speed)
-			velocity.z = move_toward(velocity.z, 0, player_speed)
+			velocity.x = move_toward(velocity.x, 0, speed_current)
+			velocity.z = move_toward(velocity.z, 0, speed_current)
 	else:
-		velocity.x = lerp(velocity.x, direction.x * player_speed, delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z * player_speed, delta * 3.0)
-		
+		velocity.x = lerp(velocity.x, direction.x * speed_current, delta * 3.0)
+		velocity.z = lerp(velocity.z, direction.z * speed_current, delta * 3.0)
+	
 	move_and_slide()
