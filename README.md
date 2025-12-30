@@ -1,8 +1,7 @@
 
-# Jwseph's First Person Character Controller
-
+# Jwseph's FP Controller
 A First Person Character Controller Made for Godot 4<br>
-*Last Updated for Godot 4.5.1
+
 
 
 
