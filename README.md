@@ -1,5 +1,5 @@
 
-# Jwseph's FP Controller
+# FP Controller for Godot 4
 A First Person Character Controller Made for Godot 4<br>
 
 
