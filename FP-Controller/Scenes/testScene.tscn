@@ -231,9 +231,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_0w1dg")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_qaahg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54036, 0)
-
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="Door" type="Node3D" parent="Interactables"]
@@ -355,6 +352,9 @@ use_collision = true
 collision_mask = 3
 size = Vector3(2.33838, 0.686584, 4.82501)
 material = SubResource("StandardMaterial3D_2xakv")
+
+[node name="Player" parent="." instance=ExtResource("2_qaahg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5941644, 0)
 
 [connection signal="body_entered" from="Interactables/Character/Area3D" to="Interactables/Character/StaticBody3D" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Interactables/Character/Area3D" to="Interactables/Character/StaticBody3D" method="_on_area_3d_body_exited"]
