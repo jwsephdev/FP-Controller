@@ -5,11 +5,11 @@ A First Person Character Controller Made for Godot 4<br>
 
 
 
-## Importing the Project Files
+## Importing the Project Files to Godot
 1. Go to Releases, and Download the Release version you want.
 2. Extract the ``FP-Controller`` folder from your downloaded ``.zip`` file. 
-3. Import the ``FP-Controller`` folder to Godot 4.5.1
-    
+3. Import the ``FP-Controller`` Project folder to Godot 4.5.1
+
 ## Features
 
 👉**Object Interaction**<br>
