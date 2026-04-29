@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bearua17sxpw0"]
+[gd_scene format=3 uid="uid://bearua17sxpw0"]
 
 [ext_resource type="Texture2D" uid="uid://bn8vs30g4r3wt" path="res://Textures/prototextures/gray.png" id="1_hgell"]
 [ext_resource type="PackedScene" uid="uid://4yye06e5g4d" path="res://Scenes/Player.tscn" id="2_qaahg"]
@@ -212,31 +212,31 @@ radius = 2.67669
 albedo_texture = ExtResource("3_0w1dg")
 uv1_triplanar = true
 
-[node name="TestScene" type="Node3D"]
+[node name="TestScene" type="Node3D" unique_id=1431919709]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1593943212]
 mesh = SubResource("PlaneMesh_gab3u")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=469976388]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=802682535]
 shape = SubResource("ConcavePolygonShape3D_2xakv")
 
-[node name="Environment" type="Node3D" parent="."]
+[node name="Environment" type="Node3D" parent="." unique_id=316841343]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1419882274]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1236657210]
 environment = SubResource("Environment_0w1dg")
 
-[node name="Interactables" type="Node3D" parent="."]
+[node name="Interactables" type="Node3D" parent="." unique_id=335259461]
 
-[node name="Door" type="Node3D" parent="Interactables"]
+[node name="Door" type="Node3D" parent="Interactables" unique_id=2072999938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.45542, 0.155414, -11.0387)
 
-[node name="door" type="CSGBox3D" parent="Interactables/Door" groups=["interact"]]
+[node name="door" type="CSGBox3D" parent="Interactables/Door" unique_id=1392650076 groups=["interact"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594463, 1.17538, -0.696731)
 use_collision = true
 collision_mask = 3
@@ -244,61 +244,57 @@ size = Vector3(0.208008, 2.53857, 1.34326)
 material = SubResource("StandardMaterial3D_gab3u")
 script = ExtResource("4_0w1dg")
 
-[node name="Doorbuttonanims" type="AnimationPlayer" parent="Interactables/Door"]
-libraries = {
-&"": SubResource("AnimationLibrary_3b31u")
-}
+[node name="Doorbuttonanims" type="AnimationPlayer" parent="Interactables/Door" unique_id=394713826]
+libraries/ = SubResource("AnimationLibrary_3b31u")
 
-[node name="Character" type="Node3D" parent="Interactables"]
+[node name="Character" type="Node3D" parent="Interactables" unique_id=1104928155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.92742, 0.784609, 0)
 
-[node name="Charactermesh" type="MeshInstance3D" parent="Interactables/Character"]
+[node name="Charactermesh" type="MeshInstance3D" parent="Interactables/Character" unique_id=1018068519]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.04479, 0)
 mesh = SubResource("BoxMesh_7x237")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Character/Charactermesh" unique_id=744073966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.539794, 0)
 mesh = SubResource("BoxMesh_2xakv")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Interactables/Character/Charactermesh" unique_id=887386087]
 transform = Transform3D(1, 0, 0, 0, 0.682853, -0.730556, 0, 0.730556, 0.682853, 0, -0.486889, -0.305867)
 mesh = SubResource("BoxMesh_ly28m")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Interactables/Character/Charactermesh" unique_id=654539457]
 transform = Transform3D(1, 0, 0, 0, 0.68044, 0.732804, 0, -0.732804, 0.68044, 0, -0.486889, 0.300252)
 mesh = SubResource("BoxMesh_ly28m")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Interactables/Character/Charactermesh" unique_id=820839098]
 transform = Transform3D(1, 0, 0, 0, 0.969317, 0.245815, 0, -0.245815, 0.969317, 0, -1.40215, 0.199087)
 mesh = SubResource("BoxMesh_ly28m")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Interactables/Character/Charactermesh"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Interactables/Character/Charactermesh" unique_id=2143545074]
 transform = Transform3D(1, 0, 0, 0, 0.975745, -0.21891, 0, 0.21891, 0.975745, 0, -1.40215, -0.276285)
 mesh = SubResource("BoxMesh_ly28m")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Interactables/Character" groups=["interact"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="Interactables/Character" unique_id=166614477 groups=["interact"]]
 script = ExtResource("6_2xakv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Character/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Character/StaticBody3D" unique_id=67291725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194397, 0.708579, 0)
 shape = SubResource("BoxShape3D_2xakv")
 
-[node name="dialogueanims" type="AnimationPlayer" parent="Interactables/Character"]
-libraries = {
-&"": SubResource("AnimationLibrary_7x237")
-}
+[node name="dialogueanims" type="AnimationPlayer" parent="Interactables/Character" unique_id=1483591316]
+libraries/ = SubResource("AnimationLibrary_7x237")
 
-[node name="Area3D" type="Area3D" parent="Interactables/Character"]
+[node name="Area3D" type="Area3D" parent="Interactables/Character" unique_id=913048216]
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Character/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Character/Area3D" unique_id=620474380]
 shape = SubResource("SphereShape3D_2xakv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Interactables/Character"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Interactables/Character" unique_id=2138158667]
 
-[node name="MarginContainer" type="MarginContainer" parent="Interactables/Character/CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Character/CanvasLayer" unique_id=129820165]
 visible = false
 anchors_preset = 7
 anchor_left = 0.5
@@ -312,17 +308,17 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 100
 
-[node name="PanelContainer" type="PanelContainer" parent="Interactables/Character/CanvasLayer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Interactables/Character/CanvasLayer/MarginContainer" unique_id=1410697088]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Interactables/Character/CanvasLayer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Interactables/Character/CanvasLayer/MarginContainer/PanelContainer" unique_id=1615322729]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="Interactables/Character/CanvasLayer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="Label" type="Label" parent="Interactables/Character/CanvasLayer/MarginContainer/PanelContainer/MarginContainer" unique_id=177300445]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Hello, World"
@@ -330,30 +326,30 @@ horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Walls" type="Node3D" parent="."]
+[node name="Walls" type="Node3D" parent="." unique_id=110936944]
 
-[node name="Doorwall" type="CSGBox3D" parent="Walls"]
+[node name="Doorwall" type="CSGBox3D" parent="Walls" unique_id=387039410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38581, 1.4401, -11.3735)
 use_collision = true
 collision_mask = 3
 size = Vector3(0.236328, 2.95361, 9.41235)
 material = SubResource("StandardMaterial3D_2xakv")
 
-[node name="e" type="CSGBox3D" parent="Walls/Doorwall"]
+[node name="e" type="CSGBox3D" parent="Walls/Doorwall" unique_id=826210739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18419, -0.12956, -0.383359)
 operation = 2
 use_collision = true
 collision_mask = 3
 size = Vector3(0.910553, 2.62512, 1.34352)
 
-[node name="Doorwall2" type="CSGBox3D" parent="Walls"]
+[node name="Doorwall2" type="CSGBox3D" parent="Walls" unique_id=35412400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47673, 1.88402, -9.07983)
 use_collision = true
 collision_mask = 3
 size = Vector3(2.33838, 0.686584, 4.82501)
 material = SubResource("StandardMaterial3D_2xakv")
 
-[node name="Player" parent="." instance=ExtResource("2_qaahg")]
+[node name="Player" parent="." unique_id=2076204014 instance=ExtResource("2_qaahg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5941644, 0)
 
 [connection signal="body_entered" from="Interactables/Character/Area3D" to="Interactables/Character/StaticBody3D" method="_on_area_3d_body_entered"]

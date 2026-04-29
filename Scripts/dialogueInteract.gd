@@ -6,7 +6,6 @@ extends StaticBody3D
 var target
 
 func interaction():
-	
 	if Input.is_action_just_pressed("Interact"):
 		dialogueanims.play("open")
 		area_3d.monitoring = true

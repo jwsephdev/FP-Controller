@@ -7,7 +7,7 @@ class_name Player extends CharacterBody3D
 @onready var camera: Camera3D = $Head/neck/Camera
 @onready var neck: Node3D = $Head/neck
 @onready var interactray: RayCast3D = $Head/neck/Camera/Rays/InteractRay
-@onready var hand: Marker3D = $Head/neck/Camera/Rays/InteractRay/Hand
+@onready var player_collision: CollisionShape3D = $player_collision
 
 
 #SPEEDS
@@ -34,63 +34,34 @@ var input_dir
 @export var LeanSpeed: float = 8.0
 
 #CROUCH VARIABLES
-@export var CrouchHeadSpeed: int = 10
-@export var crouch_depth = -0.8
-var crouchState
 
-enum {
-	is_crouching,
-	not_crouching,
-}
+@export var crouch_transition_speed:float=10.0
+var standing_size :float= 2.0
+var standing_headpos:float=0.7
 
+var crouching_headpos:float=0.3
+var crouching_size :float= 1.2
 # ------ 
+
+func crouching(delta):
+	if Input.is_action_pressed("crouch"):
+		player_collision.shape.height = lerp(player_collision.shape.height,crouching_size,delta*crouch_transition_speed)
+		head.position.y = lerp(head.position.y,crouching_headpos, delta*crouch_transition_speed)
+	elif !Input.is_action_pressed("crouch") and !crouch_check_ray.is_colliding():
+		player_collision.shape.height = lerp(player_collision.shape.height,standing_size,delta*crouch_transition_speed)
+		head.position.y = lerp(head.position.y,standing_headpos, delta*crouch_transition_speed)
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.fov = FOV
 
-func camera_tilt(input_x, delta):
-	neck.rotation.z = lerp(neck.rotation.z, -input_x * LeanDepth, LeanSpeed * delta)
-
-func crouchSystem(delta):
-	if Input.is_action_pressed("crouch"):
-		crouchState = is_crouching
-		
-	elif !crouch_check_ray.is_colliding():
-		crouchState = not_crouching
-		
-	match crouchState:
-		is_crouching:
-			head.position.y = lerp(head.position.y, 0.5 + crouch_depth, delta*CrouchHeadSpeed)
-			standing_col.disabled = true
-			crouching_col.disabled = false
-			
-		not_crouching:
-			standing_col.disabled = false
-			crouching_col.disabled = true
-			head.position.y = lerp(head.position.y, 0.5, delta*15)
-	
-
-func objectInteraction():
-	var object = interactray.get_collider()
-	
-	if interactray.is_colliding():
-		if Input.is_action_just_pressed("Interact"):
-			if object.is_in_group("interact"):
-				object.interaction()
-
-func mouseMovent(event):
-	if event is InputEventMouseMotion:
-		head.rotate_y(deg_to_rad(-event.relative.x) * sens)
-		camera.rotate_x(deg_to_rad( -event.relative.y) * sens)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _input(event):
 	mouseMovent(event)
 
 func _process(delta: float) -> void:
 	objectInteraction()
-	crouchSystem(delta)
+	crouching(delta)
 	camera_tilt(input_dir.x , delta)
 
 func _physics_process(delta):
@@ -98,6 +69,7 @@ func _physics_process(delta):
 	input_dir = Input.get_vector("left", "right", "forward", "backward")
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
@@ -114,3 +86,21 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, direction.z * speed_current, delta * 3.0)
 	
 	move_and_slide()
+	
+
+func objectInteraction():
+	var object = interactray.get_collider()
+	
+	if interactray.is_colliding():
+		if Input.is_action_just_pressed("Interact"):
+			if object.is_in_group("interact"):
+				object.interaction()
+
+func mouseMovent(event):
+	if event is InputEventMouseMotion:
+		head.rotate_y(deg_to_rad(-event.relative.x) * sens)
+		camera.rotate_x(deg_to_rad( -event.relative.y) * sens)
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
+func camera_tilt(input_x, delta):
+	neck.rotation.z = lerp(neck.rotation.z, -input_x * LeanDepth, LeanSpeed * delta)
