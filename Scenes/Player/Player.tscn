@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://sqjp8q4r0x15" path="res://Scripts/player.gd" id="1_xhfnw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rpqav"]
+radius = 0.35
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rpqav"]
 load_path = "res://.godot/imported/crosshair001.png-303a7e1378613b4ab7cfcdd50bbd4d1a.ctex"

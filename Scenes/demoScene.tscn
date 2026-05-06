@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://bearua17sxpw0"]
+
+[ext_resource type="Texture2D" uid="uid://bn8vs30g4r3wt" path="res://Textures/prototypeTextures/gray.png" id="1_qh04y"]
+[ext_resource type="PackedScene" uid="uid://bxrbiomep7tq0" path="res://Scenes/Interactables/doorDemo.tscn" id="2_211ym"]
+[ext_resource type="PackedScene" uid="uid://32y8pe5n7fjc" path="res://Scenes/Interactables/dialogueDemo.tscn" id="3_icqfq"]
+[ext_resource type="Texture2D" uid="uid://cnl8py0sb7kft" path="res://Textures/prototypeTextures/orange.png" id="4_pacal"]
+[ext_resource type="PackedScene" uid="uid://4yye06e5g4d" path="res://Scenes/Player/Player.tscn" id="5_3s3et"]
+[ext_resource type="PackedScene" uid="uid://ccoyujkaf4efm" path="res://Scenes/Misc/label_3d.tscn" id="5_211ym"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qaahg"]
+sky_top_color = Color(0.282739, 0.297656, 0.686786, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.576057, 0.509525, 0.432671, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_hgell"]
+sky_material = SubResource("ProceduralSkyMaterial_qaahg")
+
+[sub_resource type="Environment" id="Environment_0w1dg"]
+background_mode = 2
+sky = SubResource("Sky_hgell")
+tonemap_mode = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b31u"]
+albedo_texture = ExtResource("1_qh04y")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gab3u"]
+material = SubResource("StandardMaterial3D_3b31u")
+size = Vector2(43.055, 52.365)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y1jas"]
+data = PackedVector3Array(21.5275, 0, 26.182499, -21.5275, 0, 26.182499, 21.5275, 0, -26.182499, -21.5275, 0, 26.182499, -21.5275, 0, -26.182499, 21.5275, 0, -26.182499)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xakv"]
+albedo_texture = ExtResource("4_pacal")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_211ym"]
+albedo_texture = ExtResource("4_pacal")
+uv1_triplanar = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_211ym"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_icqfq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_43ajs"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pacal"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nqdhh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3s3et"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d7osm"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TestScene" type="Node3D" unique_id=1431919709]
+
+[node name="Environment" type="Node3D" parent="." unique_id=316841343]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=1419882274]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_bake_mode = 1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1236657210]
+environment = SubResource("Environment_0w1dg")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1593943212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042851448, -1.9073486e-06, -0.02254963)
+mesh = SubResource("PlaneMesh_gab3u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=387779762]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=817848255]
+shape = SubResource("ConcavePolygonShape3D_y1jas")
+
+[node name="Interactables" type="Node3D" parent="." unique_id=335259461]
+
+[node name="DoorDemo" parent="Interactables" unique_id=185022188 instance=ExtResource("2_211ym")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -8.403287, 0.09585965, -8.60047)
+
+[node name="DialogueDemo" parent="Interactables" unique_id=235298504 instance=ExtResource("3_icqfq")]
+transform = Transform3D(-3.8247464e-08, 0, -0.875, 0, 0.875, 0, 0.875, 0, -3.8247464e-08, -7.6681213, 0.7697408, 0)
+
+[node name="Walls" type="Node3D" parent="." unique_id=110936944]
+
+[node name="Doorwall" type="CSGBox3D" parent="Walls" unique_id=387039410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.38581, 1.4401, -8.570126)
+use_collision = true
+collision_mask = 3
+size = Vector3(0.236328, 2.95361, 3.5667105)
+material = SubResource("StandardMaterial3D_2xakv")
+
+[node name="e" type="CSGBox3D" parent="Walls/Doorwall" unique_id=826210739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13906956, -0.12956, -0.026307106)
+operation = 2
+use_collision = true
+collision_mask = 3
+size = Vector3(0.910553, 2.62512, 1.3621898)
+
+[node name="CrouchingTest" type="CSGBox3D" parent="Walls" unique_id=1374903704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.402903, 1.6889663, -2.9915771)
+use_collision = true
+size = Vector3(2.3292236, 0.6245117, 7.261963)
+material = SubResource("StandardMaterial3D_211ym")
+
+[node name="CrouchingTest2" type="CSGBox3D" parent="Walls" unique_id=1099532551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.402903, 0.38957787, 5.9037194)
+use_collision = true
+size = Vector3(2.3292236, 1.0019379, 2.932251)
+material = SubResource("StandardMaterial3D_211ym")
+
+[node name="CrouchingTest3" type="CSGBox3D" parent="Walls" unique_id=690512021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.397751, 0.7088604, 10.403706)
+use_collision = true
+size = Vector3(2.3292236, 1.6405029, 2.932251)
+material = SubResource("StandardMaterial3D_211ym")
+
+[node name="CrouchingTest4" type="CSGBox3D" parent="Walls" unique_id=1036768048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.947793, 1.0970745, 10.37517)
+use_collision = true
+size = Vector3(2.3292236, 2.4169312, 2.932251)
+material = SubResource("StandardMaterial3D_211ym")
+
+[node name="CrouchingTest5" type="CSGBox3D" parent="Walls" unique_id=494505619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.911264, 1.5358486, 5.0591393)
+use_collision = true
+size = Vector3(2.3292236, 3.2944794, 2.932251)
+material = SubResource("StandardMaterial3D_211ym")
+
+[node name="Labels" type="Node3D" parent="." unique_id=1444187946]
+
+[node name="headerLabel" parent="Labels" unique_id=1517508992 instance=ExtResource("5_211ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5929537, 8.379846, -21.77681)
+texture = SubResource("ViewportTexture_211ym")
+
+[node name="SubViewport" parent="Labels/headerLabel" index="0" unique_id=2118536369]
+size = Vector2i(2397, 720)
+
+[node name="Label" parent="Labels/headerLabel/SubViewport" index="0" unique_id=372987108]
+text = "FIRST PERSON CONTROLLER
+TEMPLATE"
+
+[node name="Label3D2" parent="Labels" unique_id=447253872 instance=ExtResource("5_211ym")]
+transform = Transform3D(-2.8193845e-08, 0, 0.645, 0, 0.645, 0, -0.645, 0, -2.8193845e-08, -8.771769, 4.118857, -3.7212715)
+texture = SubResource("ViewportTexture_icqfq")
+
+[node name="Label" parent="Labels/Label3D2/SubViewport" parent_id_path=PackedInt32Array(447253872, 2118536369) index="0" unique_id=372987108]
+theme_override_font_sizes/font_size = 99
+text = "OBJECT INTERACTION
+[E] - Interact"
+
+[node name="Label3D7" parent="Labels" unique_id=2003474195 instance=ExtResource("5_211ym")]
+transform = Transform3D(-2.8193845e-08, 0, 0.645, 0, 0.645, 0, -0.645, 0, -2.8193845e-08, -8.771769, 4.118857, 8.704944)
+texture = SubResource("ViewportTexture_43ajs")
+
+[node name="Label" parent="Labels/Label3D7/SubViewport" parent_id_path=PackedInt32Array(2003474195, 2118536369) index="0" unique_id=372987108]
+theme_override_font_sizes/font_size = 99
+text = "Rigidbody Pickup
+Coming Soon.."
+
+[node name="Label3D3" parent="Labels" unique_id=1642609474 instance=ExtResource("5_211ym")]
+transform = Transform3D(-2.8193842e-08, 0, -0.6449999, 0, 0.6449999, 0, 0.6449999, 0, -2.8193842e-08, 9.35467, 3.5055218, -0.8257729)
+texture = SubResource("ViewportTexture_pacal")
+
+[node name="Label" parent="Labels/Label3D3/SubViewport" parent_id_path=PackedInt32Array(1642609474, 2118536369) index="0" unique_id=372987108]
+theme_override_font_sizes/font_size = 99
+text = "[Ctrl] - Crouch"
+
+[node name="Label3D5" parent="Labels" unique_id=1681546014 instance=ExtResource("5_211ym")]
+transform = Transform3D(-2.8193842e-08, 0, -0.6449999, 0, 0.6449999, 0, 0.6449999, 0, -2.8193842e-08, 9.35467, 3.5055218, 9.994346)
+texture = SubResource("ViewportTexture_nqdhh")
+
+[node name="Label" parent="Labels/Label3D5/SubViewport" parent_id_path=PackedInt32Array(1681546014, 2118536369) index="0" unique_id=372987108]
+theme_override_font_sizes/font_size = 99
+text = "[Space] - Jump"
+
+[node name="Label3D4" parent="Labels" unique_id=399160095 instance=ExtResource("5_211ym")]
+transform = Transform3D(0.6449999, 0, 0, 0, 0.6449999, 0, 0, 0, 0.6449999, 0.3090756, 1.6584072, 15.212835)
+texture = SubResource("ViewportTexture_3s3et")
+
+[node name="Label" parent="Labels/Label3D4/SubViewport" parent_id_path=PackedInt32Array(399160095, 2118536369) index="0" unique_id=372987108]
+theme_override_font_sizes/font_size = 99
+text = "[W,A,S,D] - Movement"
+
+[node name="Label3D6" parent="Labels" unique_id=849354345 instance=ExtResource("5_211ym")]
+transform = Transform3D(1.11, 0, 0, 0, 1.11, 0, 0, 0, 1.11, 2.5999384, 5.442831, -21.419388)
+texture = SubResource("ViewportTexture_d7osm")
+
+[node name="Label" parent="Labels/Label3D6/SubViewport" parent_id_path=PackedInt32Array(849354345, 2118536369) index="0" unique_id=372987108]
+theme_override_font_sizes/font_size = 99
+text = "@JwsephDev"
+
+[node name="Player" parent="." unique_id=2076204014 instance=ExtResource("5_3s3et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1953812, 18.331894)
+
+[editable path="Labels/headerLabel"]
+[editable path="Labels/Label3D2"]
+[editable path="Labels/Label3D7"]
+[editable path="Labels/Label3D3"]
+[editable path="Labels/Label3D5"]
+[editable path="Labels/Label3D4"]
+[editable path="Labels/Label3D6"]

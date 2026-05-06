@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://32y8pe5n7fjc"]
+
+[ext_resource type="Texture2D" uid="uid://dpdo4x33rf6nq" path="res://icon.svg" id="1_kljh2"]
+[ext_resource type="Script" uid="uid://citouttsfrc4d" path="res://Scripts/dialogueDemo.gd" id="2_7wosa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kljh2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2xakv"]
+radius = 2.67669
+
+[sub_resource type="BoxMesh" id="BoxMesh_2xakv"]
+size = Vector3(0.3, 0.8, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ly28m"]
+size = Vector3(0.2, 1, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly28m"]
+albedo_texture = ExtResource("1_kljh2")
+uv1_scale = Vector3(2.39, 2.39, 2.39)
+uv1_offset = Vector3(0.295, -0.125, -2.675)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7x237"]
+material = SubResource("StandardMaterial3D_ly28m")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_ly28m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterUI/MarginContainer/PanelContainer/MarginContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterUI/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2xakv"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterUI/MarginContainer/PanelContainer/MarginContainer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterUI/MarginContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x237"]
+_data = {
+&"RESET": SubResource("Animation_ly28m"),
+&"open": SubResource("Animation_2xakv")
+}
+
+[node name="DialogueDemo" type="Node3D" unique_id=235298504]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="CharacterCollision" type="StaticBody3D" parent="." unique_id=832707006 groups=["interact"]]
+script = ExtResource("2_7wosa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterCollision" unique_id=1845618521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33117825, 0)
+shape = SubResource("CapsuleShape3D_kljh2")
+
+[node name="interactionArea" type="Area3D" parent="." unique_id=917064039]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactionArea" unique_id=195630117]
+shape = SubResource("SphereShape3D_2xakv")
+
+[node name="CharacterMesh" type="Node3D" parent="." unique_id=2115885102]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterMesh" unique_id=216495180]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.504996, 0)
+mesh = SubResource("BoxMesh_2xakv")
+skeleton = NodePath("../Charactermesh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterMesh" unique_id=400462938]
+transform = Transform3D(-4.37114e-08, 0.730556, 0.682853, 0, 0.682853, -0.730556, -1, -3.1933624e-08, -2.9848458e-08, -0.305867, 0.557901, 1.3369874e-08)
+mesh = SubResource("BoxMesh_ly28m")
+skeleton = NodePath("../Charactermesh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CharacterMesh" unique_id=350580328]
+transform = Transform3D(-4.37114e-08, -0.732804, 0.68044, 0, 0.68044, 0.732804, -1, 3.203189e-08, -2.9742985e-08, 0.300252, 0.557901, -1.3124435e-08)
+mesh = SubResource("BoxMesh_ly28m")
+skeleton = NodePath("../Charactermesh")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="CharacterMesh" unique_id=144510798]
+transform = Transform3D(-4.37114e-08, -0.245815, 0.969317, 0, 0.969317, 0.245815, -1, 1.0744917e-08, -4.2370203e-08, 0.199087, -0.35736, -8.70237e-09)
+mesh = SubResource("BoxMesh_ly28m")
+skeleton = NodePath("../Charactermesh")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="CharacterMesh" unique_id=1753684090]
+transform = Transform3D(-4.37114e-08, 0.21891, 0.975745, 0, 0.975745, -0.21891, -1, -9.568862e-09, -4.265118e-08, -0.276285, -0.35736, 1.2076804e-08)
+mesh = SubResource("BoxMesh_ly28m")
+skeleton = NodePath("../Charactermesh")
+
+[node name="Charactermesh" type="MeshInstance3D" parent="CharacterMesh" unique_id=645379928]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.04479, 0)
+mesh = SubResource("BoxMesh_7x237")
+skeleton = NodePath("../../..")
+
+[node name="CharacterUI" type="CanvasLayer" parent="." unique_id=2045212630]
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI" unique_id=2028186265]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -186.0
+offset_top = -189.0
+offset_right = 186.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="CharacterUI/MarginContainer" unique_id=2037970964]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI/MarginContainer/PanelContainer" unique_id=1508168854]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CharacterUI/MarginContainer/PanelContainer/MarginContainer" unique_id=810885461]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Hello, World"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="anims" type="AnimationPlayer" parent="." unique_id=982871174]
+libraries/ = SubResource("AnimationLibrary_7x237")
+
+[connection signal="body_entered" from="interactionArea" to="CharacterCollision" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="interactionArea" to="CharacterCollision" method="_on_area_3d_body_exited"]

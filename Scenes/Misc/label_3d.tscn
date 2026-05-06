@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ccoyujkaf4efm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w1ads"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Label3D" type="Sprite3D" unique_id=1517508992]
+texture = SubResource("ViewportTexture_w1ads")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2118536369]
+transparent_bg = true
+size = Vector2i(1052, 380)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=372987108]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 44
+theme_override_font_sizes/font_size = 170
+text = "INSERT TEXT"
+horizontal_alignment = 1

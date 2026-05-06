@@ -27,5 +27,3 @@ A First Person Character Controller Made for Godot 4<br>
 **[CTRL]** - Crouch<br>
 **[SPACE]** - Jump<br>
 **[E]** - Interact<br>
-
-
